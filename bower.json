@@ -1,0 +1,26 @@
+{
+  "name": "harden",
+  "main": "harden.js",
+  "version": "0.0.0",
+  "homepage": "https://github.com/volkovasystems/harden",
+  "authors": [
+    "Richeve S. Bebedor <richeve.bebedor@gmail.com>"
+  ],
+  "description": "Makes your object properties hard.",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "harden",
+    "Object.defineProperty",
+    "constants"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
