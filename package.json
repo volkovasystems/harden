@@ -1,0 +1,27 @@
+{
+  "name": "harden",
+  "version": "0.1.0",
+  "description": "Makes your object properties hard.",
+  "main": "harden.js",
+  "scripts": {
+    "test": "mocha harden-test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/volkovasystems/harden.git"
+  },
+  "keywords": [
+    "harden",
+    "hard-property",
+    "property",
+    "object",
+    "constants",
+    "constant"
+  ],
+  "author": "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/volkovasystems/harden/issues"
+  },
+  "homepage": "https://github.com/volkovasystems/harden#readme"
+}
