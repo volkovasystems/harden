@@ -1,9 +1,11 @@
 {
   "name": "harden",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Makes your object properties hard.",
   "main": "harden.js",
   "scripts": {
+    "preinstall": "npm install mocha gulp -g && npm install gulp",
+    "postinstall": "gulp",
     "test": "mocha harden-test.js"
   },
   "repository": {
@@ -23,5 +25,9 @@
   "bugs": {
     "url": "https://github.com/volkovasystems/harden/issues"
   },
-  "homepage": "https://github.com/volkovasystems/harden#readme"
+  "homepage": "https://github.com/volkovasystems/harden#readme",
+  "devDependencies": {
+    "pita": "^0.1.0",
+    "unit.js": "^2.0.0"
+  }
 }

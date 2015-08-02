@@ -74,12 +74,14 @@ var harden = function harden( property, value, entity ){
 };
 
 
-if( typeof module != "undefined" ){ module.exports = harden; }
+if( typeof module != "undefined" ){ 
+	module.exports = harden; 
+}
 
 if( typeof global != "undefined" ){
 	harden
 		.bind( harden )( "globalize", 
 			function globalize( ){
-				global.harden = harden;
+				harden.bind( global )( "harden", harden );
 			} );
 }
