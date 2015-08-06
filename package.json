@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/volkovasystems/harden#readme",
   "dependencies": {
+    "gulp": "^3.9.0",
     "pita": "^0.1.0",
     "unit.js": "^2.0.0"
   }
