@@ -1,10 +1,9 @@
 {
   "name": "harden",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Makes your object properties hard.",
   "main": "harden.js",
   "scripts": {
-    "preinstall": "npm install mocha gulp -g && npm install gulp",
     "test": "mocha harden-test.js"
   },
   "repository": {
