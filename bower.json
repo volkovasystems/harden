@@ -1,7 +1,7 @@
 {
   "name": "harden",
   "main": "harden.js",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "homepage": "https://github.com/volkovasystems/harden",
   "authors": [
     "Richeve S. Bebedor <richeve.bebedor@gmail.com>"
