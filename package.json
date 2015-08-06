@@ -1,6 +1,6 @@
 {
   "name": "harden",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Makes your object properties hard.",
   "main": "harden.js",
   "scripts": {
@@ -24,7 +24,7 @@
     "url": "https://github.com/volkovasystems/harden/issues"
   },
   "homepage": "https://github.com/volkovasystems/harden#readme",
-  "dependencies": {
+  "devDependencies": {
     "gulp": "^3.9.0",
     "pita": "^0.2.0",
     "unit.js": "^2.0.0"
