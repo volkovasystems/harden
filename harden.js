@@ -41,36 +41,40 @@
 	@end-module-documentation
 */
 var harden = function harden( property, value, entity ){
-    /*:
+	/*:
 		@meta-configuration:
 			{
 				"property:required": "string",
-                "value:required": "*",
-                "entity:required": "object"
+				"value:required": "*",
+				"entity:required": "object"
 			}
 		@end-meta-configuration
 	*/
 
-    if( this !== window &&
-        typeof entity == "undefined" )
-    {
-        entity = this;
-    }
+	if( ( typeof window != "undefined" &&
+			this !== window &&
+			typeof entity == "undefined" ) ||
+		( typeof module != "undefined" &&
+			this !== module &&
+			typeof entity == "undefined" ) )
+	{
+		entity = this;
+	}
 
-    if( typeof entity == "undefined" ||
-        !entity )
-    {
-        throw new Error( "entity was not given" );
-    }
+	if( typeof entity == "undefined" ||
+		!entity )
+	{
+		throw new Error( "entity was not given" );
+	}
 
-    Object.defineProperty( entity, property, {
-        "enumerable": false,
-        "configurable": false,
-        "writable": false,
-        "value": value
-    } );
+	Object.defineProperty( entity, property, {
+		"enumerable": false,
+		"configurable": false,
+		"writable": false,
+		"value": value
+	} );
 
-    return entity;
+	return entity;
 };
 
 
