@@ -67,6 +67,12 @@ var harden = function harden( property, value, entity ){
 		throw new Error( "entity was not given" );
 	}
 
+	if( typeof entity[ property ] != "undefined" ){
+		console.log( "property", property, "already exists" );
+
+		return entity;
+	}
+
 	Object.defineProperty( entity, property, {
 		"enumerable": false,
 		"configurable": false,
@@ -78,13 +84,13 @@ var harden = function harden( property, value, entity ){
 };
 
 
-if( typeof module != "undefined" ){ 
-	module.exports = harden; 
+if( typeof module != "undefined" ){
+	module.exports = harden;
 }
 
 if( typeof global != "undefined" ){
 	harden
-		.bind( harden )( "globalize", 
+		.bind( harden )( "globalize",
 			function globalize( ){
 				harden.bind( global )( "harden", harden );
 			} );
