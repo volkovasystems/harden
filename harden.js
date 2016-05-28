@@ -1,8 +1,10 @@
 /*:
 	@module-license:
 		The MIT License (MIT)
+		@mit-license
 
-		Copyright (c) 2014 Richeve Siodina Bebedor
+		Copyright (@c) 2016 Richeve Siodina Bebedor
+		@email: richeve.bebedor@gmail.com
 
 		Permission is hereby granted, free of charge, to any person obtaining a copy
 		of this software and associated documentation files (the "Software"), to deal
@@ -25,50 +27,46 @@
 
 	@module-configuration:
 		{
-			"packageName": "harden",
-			"fileName": "harden.js",
-			"moduleName": "harden",
-			"authorName": "Richeve S. Bebedor",
-			"authorEMail": "richeve.bebedor@gmail.com",
-			"repository": "git@github.com:volkovasystems/harden.git",
-			"testCase": "harden-test.js",
-			"isGlobal": true
+			"package": "harden",
+			"file": "harden.js",
+			"module": "harden",
+			"author": "Richeve S. Bebedor",
+			"email": "richeve.bebedor@gmail.com",
+			"repository": "https://github.com/volkovasystems/harden.git",
+			"test": "harden-test.js",
+			"global": true
 		}
 	@end-module-configuration
 
 	@module-documentation:
+		Makes your property-value non-enumerable, non-configurable and non-writable.
 
+		If entity is given, the property will be bound to the entity.
+
+		Else, if this module is used in the browser, the entity defaults to the @code:window;.
+
+		Else, if this module is used in a NodeJS environment, the entity defaults to @code:global;.
+
+		Note that if the entity is hardened, you cannot use @code:delete; on it.
 	@end-module-documentation
 */
+
 var harden = function harden( property, value, entity ){
 	/*:
 		@meta-configuration:
 			{
 				"property:required": "string",
 				"value:required": "*",
-				"entity:required": "object"
+				"entity:optional": "object"
 			}
 		@end-meta-configuration
 	*/
 
-	if( ( typeof window != "undefined" &&
-			this !== window &&
-			typeof entity == "undefined" ) ||
-		( typeof module != "undefined" &&
-			this !== module &&
-			typeof entity == "undefined" ) )
-	{
-		entity = this;
-	}
-
-	if( typeof entity == "undefined" ||
-		!entity )
-	{
-		throw new Error( "entity was not given" );
-	}
+	entity = entity || this;
 
 	if( typeof entity[ property ] != "undefined" ){
-		console.log( "property", property, "already exists" );
+		console.log( "warning, property", property, "already exists",
+			"cannot override property" );
 
 		return entity;
 	}
@@ -86,12 +84,4 @@ var harden = function harden( property, value, entity ){
 
 if( typeof module != "undefined" ){
 	module.exports = harden;
-}
-
-if( typeof global != "undefined" ){
-	harden
-		.bind( harden )( "globalize",
-			function globalize( ){
-				harden.bind( global )( "harden", harden );
-			} );
 }
