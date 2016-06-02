@@ -28,6 +28,7 @@
 	@module-configuration:
 		{
 			"package": "harden",
+			"path": "harden/harden.js",
 			"file": "harden.js",
 			"module": "harden",
 			"author": "Richeve S. Bebedor",
@@ -65,8 +66,10 @@ var harden = function harden( property, value, entity ){
 	entity = entity || this;
 
 	if( typeof entity[ property ] != "undefined" ){
-		console.log( "warning, property", property, "already exists",
-			"cannot override property" );
+		if( !harden.silent ){
+			console.log( "warning, property", property, "already exists",
+				"cannot override property" );
+		}
 
 		return entity;
 	}
@@ -81,6 +84,11 @@ var harden = function harden( property, value, entity ){
 	return entity;
 };
 
+harden.silent = true;
+
+harden.setSilent = function setSilent( silent ){
+	harden.silent = silent;
+};
 
 if( typeof module != "undefined" ){
 	module.exports = harden;
