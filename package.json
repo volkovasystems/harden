@@ -1,6 +1,6 @@
 {
   "name": "harden",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Makes your object properties hard.",
   "main": "harden.js",
   "scripts": { },

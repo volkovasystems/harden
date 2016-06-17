@@ -63,7 +63,23 @@ var harden = function harden( property, value, entity ){
 		@end-meta-configuration
 	*/
 
-	entity = entity || this;
+	var self = this;
+	if( typeof global != "undefined" ){
+		if( !this ||
+			this === global )
+		{
+			self = global;
+		}
+
+	}else if( typeof window != "undefined" ){
+		if( !this ||
+			this === window )
+		{
+			self = window;
+		}
+	}
+
+	entity = entity || self;
 
 	if( typeof entity[ property ] != "undefined" ){
 		if( !harden.silent ){
