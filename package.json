@@ -1,9 +1,9 @@
 {
   "name": "harden",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Makes your object properties hard.",
   "main": "harden.js",
-  "scripts": { },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/volkovasystems/harden.git"
@@ -21,5 +21,6 @@
   "bugs": {
     "url": "https://github.com/volkovasystems/harden/issues"
   },
-  "homepage": "https://github.com/volkovasystems/harden#readme"
+  "homepage": "https://github.com/volkovasystems/harden#readme",
+  "dependencies": {}
 }

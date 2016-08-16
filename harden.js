@@ -1,4 +1,4 @@
-/*:
+/*;
 	@module-license:
 		The MIT License (MIT)
 		@mit-license
@@ -53,7 +53,7 @@
 */
 
 var harden = function harden( property, value, entity ){
-	/*:
+	/*;
 		@meta-configuration:
 			{
 				"property:required": "string",
@@ -64,29 +64,20 @@ var harden = function harden( property, value, entity ){
 	*/
 
 	var self = this;
-	if( typeof global != "undefined" ){
-		if( !this ||
-			this === global )
-		{
-			self = global;
-		}
+	if( typeof global != "undefined" &&
+		this === global )
+	{
+		self = global;
 
-	}else if( typeof window != "undefined" ){
-		if( !this ||
-			this === window )
-		{
-			self = window;
-		}
+	}else if( typeof window != "undefined" &&
+		this === window )
+	{
+		self = window;
 	}
 
 	entity = entity || self;
 
 	if( typeof entity[ property ] != "undefined" ){
-		if( !harden.silent ){
-			console.log( "warning, property", property, "already exists",
-				"cannot override property" );
-		}
-
 		return entity;
 	}
 
@@ -98,12 +89,6 @@ var harden = function harden( property, value, entity ){
 	} );
 
 	return entity;
-};
-
-harden.silent = true;
-
-harden.setSilent = function setSilent( silent ){
-	harden.silent = silent;
 };
 
 if( typeof module != "undefined" ){
