@@ -1,3 +1,5 @@
+"use strict";
+
 /*;
 	@module-license:
 		The MIT License (MIT)
@@ -62,6 +64,12 @@ var harden = function harden( property, value, entity ){
 			}
 		@end-meta-configuration
 	*/
+
+	if( !property ||
+		typeof property != "string" )
+	{
+		throw new Error( "invalid property" );
+	}
 
 	var self = this;
 	if( typeof global != "undefined" &&
