@@ -32,7 +32,7 @@
 			"file": "harden.js",
 			"module": "harden",
 			"author": "Richeve S. Bebedor",
-			"email": "richeve.bebedor@gmail.com",
+			"eMail": "richeve.bebedor@gmail.com",
 			"repository": "https://github.com/volkovasystems/harden.git",
 			"test": "harden-test.js",
 			"global": true
@@ -52,7 +52,7 @@
 	@end-module-documentation
 */
 
-var harden = function harden( property, value, entity ){
+this.harden = function harden( property, value, entity ){
 	/*;
 		@meta-configuration:
 			{
@@ -63,21 +63,15 @@ var harden = function harden( property, value, entity ){
 		@end-meta-configuration
 	*/
 
-	if( !property ||
-		typeof property != "string" )
-	{
+	if( property === "" || typeof property != "string" ){
 		throw new Error( "invalid property" );
 	}
 
-	var self = this;
-	if( typeof global != "undefined" &&
-		this === global )
-	{
+	let self = this;
+	if( typeof global != "undefined" && this === global ){
 		self = global;
 
-	}else if( typeof window != "undefined" &&
-		this === window )
-	{
+	}else if( typeof window != "undefined" && this === window ){
 		self = window;
 	}
 
@@ -87,16 +81,23 @@ var harden = function harden( property, value, entity ){
 		return entity;
 	}
 
-	Object.defineProperty( entity, property, {
-		"enumerable": false,
-		"configurable": false,
-		"writable": false,
-		"value": value
-	} );
+	try{
+		Object.defineProperty( entity, property, {
+			"enumerable": false,
+			"configurable": false,
+			"writable": false,
+			"value": value
+		} );
 
-	return entity;
+	}catch( error ){
+		throw new Error( `cannot harden property, ${ property }, error, ${ error.stack }` );
+	}
+
+	return harden.bind( self );
 };
 
-if( typeof module != "undefined" ){
-	module.exports = harden;
+if( typeof module != "undefined" &&
+	typeof module.exports != "undefined" )
+{
+	module.exports = this.harden;
 }
