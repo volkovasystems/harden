@@ -67,7 +67,7 @@ this.harden = function harden( property, value, entity ){
 		throw new Error( "invalid property" );
 	}
 
-	let self = this;
+	let self = entity || this;
 	if( typeof global != "undefined" && this === global ){
 		self = global;
 
@@ -93,11 +93,26 @@ this.harden = function harden( property, value, entity ){
 		throw new Error( `cannot harden property, ${ property }, error, ${ error.stack }` );
 	}
 
-	return harden.bind( self );
+	if( ( ( typeof global != "undefined" && entity !== global ) ||
+		( typeof window != "undefined" && entity !== window ) ) &&
+		typeof entity.harden == "undefined" )
+	{
+		try{
+			Object.defineProperty( entity, "harden", {
+				"enumerable": false,
+				"configurable": false,
+				"writable": false,
+				"value": harden.bind( self )
+			} );
+
+		}catch( error ){
+			throw new Error( `cannot bind harden, error, ${ error.stack }` );
+		}
+	}
+
+	return entity;
 };
 
-if( typeof module != "undefined" &&
-	typeof module.exports != "undefined" )
-{
+if( typeof module != "undefined" && typeof module.exports != "undefined" ){
 	module.exports = this.harden;
 }
