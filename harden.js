@@ -52,7 +52,7 @@
 	@end-module-documentation
 */
 
-this.harden = function harden( property, value, entity ){
+var harden = function harden( property, value, entity ){
 	/*;
 		@meta-configuration:
 			{
@@ -67,8 +67,11 @@ this.harden = function harden( property, value, entity ){
 		throw new Error( "invalid property" );
 	}
 
-	let self = entity || this;
-	if( typeof global != "undefined" && this === global ){
+	let self = this;
+	if( typeof entity != "undefined" ){
+		self = entity;
+
+	}else if( typeof global != "undefined" && this === global ){
 		self = global;
 
 	}else if( typeof window != "undefined" && this === window ){
@@ -114,5 +117,5 @@ this.harden = function harden( property, value, entity ){
 };
 
 if( typeof module != "undefined" && typeof module.exports != "undefined" ){
-	module.exports = this.harden;
+	module.exports = harden;
 }
