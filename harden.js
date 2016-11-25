@@ -52,7 +52,7 @@
 	@end-module-documentation
 */
 
-var harden = function harden( property, value, entity ){
+const harden = function harden( property, value, entity ){
 	/*;
 		@meta-configuration:
 			{
@@ -93,7 +93,7 @@ var harden = function harden( property, value, entity ){
 		} );
 
 	}catch( error ){
-		throw new Error( `cannot harden property, ${ property }, error, ${ error.stack }` );
+		throw new Error( `cannot harden property, ${ property }, error, ${ error }` );
 	}
 
 	if( ( ( typeof global != "undefined" && entity !== global ) ||
@@ -109,13 +109,11 @@ var harden = function harden( property, value, entity ){
 			} );
 
 		}catch( error ){
-			throw new Error( `cannot bind harden, error, ${ error.stack }` );
+			throw new Error( `cannot bind harden, error, ${ error }` );
 		}
 	}
 
 	return entity;
 };
 
-if( typeof module != "undefined" && typeof module.exports != "undefined" ){
-	module.exports = harden;
-}
+module.exports = harden;
