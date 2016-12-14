@@ -11,6 +11,7 @@ module.exports = {
 		"filename": "harden.deploy.js"
 	},
 	"plugins": [
+		new webpack.ResolverPlugin( new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin( "bower.json", [ "support" ] ) ),
 		new webpack.ResolverPlugin( new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin( ".bower.json", [ "main" ] ) ),
 		new webpack.optimize.UglifyJsPlugin( { compress: { warnings: false } } )
 	]
