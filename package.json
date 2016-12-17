@@ -3,6 +3,8 @@
   "version": "0.11.0",
   "description": "Makes your object properties hard.",
   "main": "harden.js",
+  "support": "harden.support.js",
+  "deploy": "harden.deploy.js",
   "scripts": {
     "build": "babel harden.js -o harden.support.js && webpack",
     "test": "mocha harden-test.js"
