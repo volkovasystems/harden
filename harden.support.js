@@ -86,6 +86,12 @@ var harden = function harden(property, value, entity) {
 
 	entity = entity || self;
 
+	if (typeof entity == "undefined" && typeof global != "undefined") {
+		entity = global;
+	} else if (typeof entity == "undefined" && typeof window != "undefined") {
+		entity = window;
+	}
+
 	if (typeof entity[property] != "undefined") {
 		return entity;
 	}
