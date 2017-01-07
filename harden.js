@@ -3,7 +3,7 @@
 		The MIT License (MIT)
 		@mit-license
 
-		Copyright (@c) 2016 Richeve Siodina Bebedor
+		Copyright (@c) 2017 Richeve Siodina Bebedor
 		@email: richeve.bebedor@gmail.com
 
 		Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -56,14 +56,22 @@ const harden = function harden( property, value, entity ){
 	/*;
 		@meta-configuration:
 			{
-				"property:required": "string",
+				"property:required": [
+					"string",
+					"symbol",
+					"number"
+				],
 				"value:required": "*",
 				"entity:optional": "object"
 			}
 		@end-meta-configuration
 	*/
 
-	if( property === "" || typeof property != "string" ){
+	if( property === "" ||
+		( typeof property != "string" &&
+			typeof property != "symbol" &&
+		 	typeof property != "number" ) )
+	{
 		throw new Error( "invalid property" );
 	}
 
