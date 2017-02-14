@@ -1,13 +1,13 @@
 {
   "name": "harden",
-  "version": "0.15.0",
+  "version": "0.16.0",
   "description": "Makes your object properties hard.",
   "main": "harden.js",
   "support": "harden.support.js",
   "deploy": "harden.deploy.js",
   "browser": "harden.deploy.js",
   "scripts": {
-    "build": "babel harden.js -o harden.support.js && webpack --progress",
+    "build": "babel harden.js --out-file harden.support.js --source-maps && webpack --progress",
     "test": "mocha harden-test.js"
   },
   "repository": {
@@ -33,7 +33,7 @@
   },
   "homepage": "https://github.com/volkovasystems/harden#readme",
   "dependencies": {
-    "babel-runtime": "^6.22.0"
+    "babel-runtime": "^6.23.0"
   },
   "devDependencies": {
     "babel-cli": "^6.23.0",
