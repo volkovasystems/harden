@@ -1,31 +1,41 @@
 "use strict";
 
 const webpack = require( "webpack" );
-const ResolverPlugin = webpack.ResolverPlugin;
-const DirectoryDescriptionFilePlugin = ResolverPlugin.DirectoryDescriptionFilePlugin;
 const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 
 module.exports = {
 	"entry": "./harden.support.js",
 	"resolve": {
-		"modulesDirectories": [ "bower_components", "node_modules" ]
-	},
-	"module": {
-		"preLoaders": [
-			{
-				"test": /\.support\.js$/,
-				"loader": "source-map-loader"
-			}
+		"descriptionFiles": [
+			"bower.json",
+			"package.json"
+		],
+		"modules": [
+			"bower_components",
+			"node_modules"
+		],
+		"mainFields": [
+			"support",
+			"browser",
+			"module",
+			"main"
 		]
 	},
+	// "module": {
+	// 	"rules": [
+	// 		{
+	// 			"enforce": "pre",
+	// 			"test": /\.support\.js$/,
+	// 			"loader": "source-map-loader"
+	// 		}
+	// 	]
+	// },
 	"output": {
 		"library": "harden",
 		"libraryTarget": "umd",
 		"filename": "harden.deploy.js"
 	},
 	"plugins": [
-		new ResolverPlugin( new DirectoryDescriptionFilePlugin( "bower.json", [ "support" ] ) ),
-		new ResolverPlugin( new DirectoryDescriptionFilePlugin( ".bower.json", [ "main" ] ) ),
 		new UglifyJsPlugin( {
 			"compress": {
 				"keep_fargs": true,
@@ -37,5 +47,5 @@ module.exports = {
 			"mangle": false
 		} )
 	],
-	"devtool": "#inline-source-map"
+	"devtool": "#cheap-module-inline-source-map"
 };
