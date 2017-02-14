@@ -34,6 +34,9 @@
 			"file": "harden.js",
 			"module": "harden",
 			"author": "Richeve S. Bebedor",
+			"contributors": [
+				"John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>"
+			],
 			"eMail": "richeve.bebedor@gmail.com",
 			"repository": "https://github.com/volkovasystems/harden.git",
 			"test": "harden-test.js",
@@ -110,7 +113,7 @@ const harden = function harden( property, value, entity ){
 		} );
 
 	}catch( error ){
-		throw new Error( `cannot harden property, ${ property }, error, ${ error }` );
+		throw new Error( `cannot harden property, ${ property }, error, ${ error.stack }` );
 	}
 
 	if( ( ( typeof global != "undefined" && entity !== global ) ||
@@ -126,7 +129,7 @@ const harden = function harden( property, value, entity ){
 			} );
 
 		}catch( error ){
-			throw new Error( `cannot bind harden, error, ${ error }` );
+			throw new Error( `cannot bind harden, error, ${ error.stack }` );
 		}
 	}
 
