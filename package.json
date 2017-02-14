@@ -1,12 +1,13 @@
 {
   "name": "harden",
-  "version": "0.14.0",
+  "version": "0.15.0",
   "description": "Makes your object properties hard.",
   "main": "harden.js",
   "support": "harden.support.js",
   "deploy": "harden.deploy.js",
+  "browser": "harden.deploy.js",
   "scripts": {
-    "build": "babel harden.js -o harden.support.js && webpack",
+    "build": "babel harden.js -o harden.support.js && webpack --progress",
     "test": "mocha harden-test.js"
   },
   "repository": {
@@ -35,11 +36,11 @@
     "babel-runtime": "^6.22.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.22.2",
-    "babel-core": "^6.22.1",
-    "babel-plugin-transform-runtime": "^6.22.0",
+    "babel-cli": "^6.23.0",
+    "babel-core": "^6.23.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-latest": "^6.22.0",
     "source-map-loader": "^0.1.6",
-    "webpack": "^1.14.0"
+    "webpack": "^2.2.1"
   }
 }
