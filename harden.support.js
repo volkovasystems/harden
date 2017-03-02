@@ -55,7 +55,7 @@
               
               		Note that if the entity is hardened, you cannot use @code:delete; on it.
               	@end-module-documentation
-              */var _defineProperty = require("babel-runtime/core-js/object/define-property");var _defineProperty2 = _interopRequireDefault(_defineProperty);var _typeof2 = require("babel-runtime/helpers/typeof");var _typeof3 = _interopRequireDefault(_typeof2);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+              */var _defineProperty = require("babel-runtime/core-js/object/define-property");var _defineProperty2 = _interopRequireDefault(_defineProperty);var _getOwnPropertySymbols = require("babel-runtime/core-js/object/get-own-property-symbols");var _getOwnPropertySymbols2 = _interopRequireDefault(_getOwnPropertySymbols);var _getOwnPropertyNames = require("babel-runtime/core-js/object/get-own-property-names");var _getOwnPropertyNames2 = _interopRequireDefault(_getOwnPropertyNames);var _typeof2 = require("babel-runtime/helpers/typeof");var _typeof3 = _interopRequireDefault(_typeof2);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 var harden = function harden(property, value, entity) {
 	/*;
@@ -100,7 +100,16 @@ var harden = function harden(property, value, entity) {
 		entity = window;
 	}
 
-	if (typeof entity[property] != "undefined") {
+	/*;
+   	@note:
+   		Checking if key exists is intensive because we can define an undefined property
+   			and the key will still exists.
+   	@end-note
+   */
+	if (typeof entity[property] != "undefined" ||
+	(0, _getOwnPropertyNames2.default)(entity).some(function (key) {return key === property;}) ||
+	(0, _getOwnPropertySymbols2.default)(entity).some(function (symbol) {return symbol === property;}))
+	{
 		return entity;
 	}
 

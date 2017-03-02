@@ -100,7 +100,16 @@ const harden = function harden( property, value, entity ){
 		entity = window;
 	}
 
-	if( typeof entity[ property ] != "undefined" ){
+	/*;
+		@note:
+			Checking if key exists is intensive because we can define an undefined property
+				and the key will still exists.
+		@end-note
+	*/
+	if( typeof entity[ property ] != "undefined" ||
+		Object.getOwnPropertyNames( entity ).some( ( key ) => { return key === property; } ) ||
+	 	Object.getOwnPropertySymbols( entity ).some( ( symbol ) => { return symbol === property; } ) )
+	{
 		return entity;
 	}
 
