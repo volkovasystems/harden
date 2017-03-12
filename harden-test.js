@@ -2,7 +2,8 @@
 
 const harden = require( "./harden.js" );
 
-console.log( harden( "STRING", "string" ) );
+harden( "STRING", "string" );
+console.log( global.STRING );
 
 let test = { };
 harden( "test", undefined, test );

@@ -80,19 +80,6 @@ var harden = function harden(property, value, entity) {
 		throw new Error("invalid property");
 	}
 
-	var self = this;
-	if (typeof entity != "undefined") {
-		self = entity;
-
-	} else if (typeof global != "undefined" && this === global) {
-		self = global;
-
-	} else if (typeof window != "undefined" && this === window) {
-		self = window;
-	}
-
-	entity = entity || self;
-
 	if (typeof entity == "undefined" && typeof global != "undefined") {
 		entity = global;
 
@@ -108,7 +95,9 @@ var harden = function harden(property, value, entity) {
    */
 	if (typeof entity[property] != "undefined" ||
 	(0, _getOwnPropertyNames2.default)(entity).some(function (key) {return key === property;}) ||
-	(0, _getOwnPropertySymbols2.default)(entity).some(function (symbol) {return symbol === property;}))
+	(typeof property === "undefined" ? "undefined" : (0, _typeof3.default)(property)) == "symbol" &&
+	(0, _getOwnPropertySymbols2.default)(entity).
+	some(function (symbol) {return symbol === property;}))
 	{
 		return entity;
 	}
@@ -122,24 +111,7 @@ var harden = function harden(property, value, entity) {
 
 
 	} catch (error) {
-		throw new Error("cannot harden property, " + property + ", error, " + error.stack);
-	}
-
-	if ((typeof global != "undefined" && entity !== global ||
-	typeof window != "undefined" && entity !== window) &&
-	typeof entity.harden == "undefined")
-	{
-		try {
-			Object.defineProperty(entity, "harden", {
-				"enumerable": false,
-				"configurable": false,
-				"writable": false,
-				"value": harden.bind(self) });
-
-
-		} catch (error) {
-			throw new Error("cannot bind harden, error, " + error.stack);
-		}
+		throw new Error("cannot harden property, " + property + ", " + error.stack);
 	}
 
 	return entity;
