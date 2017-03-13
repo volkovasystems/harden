@@ -9,3 +9,6 @@ let test = { };
 harden( "test", undefined, test );
 console.log( require( "util" ).inspect( test, { "showHidden": true } ) );
 console.log( require( "util" ).inspect( harden( "test", undefined, test ), { "showHidden": true } ) );
+
+var x = { };
+console.log( harden.bind( x )( "yeah", "world" ), x.yeah );

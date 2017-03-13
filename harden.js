@@ -1,5 +1,3 @@
-"use strict";
-
 /*;
 	@module-license:
 		The MIT License (MIT)
@@ -80,11 +78,20 @@ const harden = function harden( property, value, entity ){
 		throw new Error( "invalid property" );
 	}
 
-	if( typeof entity == "undefined" && typeof global != "undefined" ){
+	if( typeof entity == "undefined" &&
+		typeof global != "undefined" &&
+		this === global )
+	{
 		entity = global;
 
-	}else if( typeof entity == "undefined" && typeof window != "undefined" ){
+	}else if( typeof entity == "undefined" &&
+		typeof window != "undefined" &&
+		this === window )
+	{
 		entity = window;
+
+	}else if( typeof entity == "undefined" ){
+		entity = this;
 	}
 
 	/*;
