@@ -78,15 +78,15 @@ var harden = function harden(property, value, entity) {
 		throw new Error("invalid property");
 	}
 
-	if (typeof entity == "undefined") {
-		if (typeof global != "undefined" && arguments.length == 2) {
+	if (typeof entity == "undefined" && arguments.length == 2) {
+		if (typeof this != "undefined") {
+			entity = this;
+
+		} else if (typeof global != "undefined") {
 			entity = global;
 
-		} else if (typeof window != "undefined" && arguments.length == 2) {
+		} else if (typeof window != "undefined") {
 			entity = window;
-
-		} else if (typeof this != "undefined") {
-			entity = this;
 
 		} else {
 			throw new Error("cannot resolve entity as context");
