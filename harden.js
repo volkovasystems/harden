@@ -78,20 +78,19 @@ const harden = function harden( property, value, entity ){
 		throw new Error( "invalid property" );
 	}
 
-	if( typeof entity == "undefined" &&
-		typeof global != "undefined" &&
-		this === global )
-	{
-		entity = global;
+	if( typeof entity == "undefined" ){
+		if( typeof global != "undefined" && arguments.length == 2 ){
+			entity = global;
 
-	}else if( typeof entity == "undefined" &&
-		typeof window != "undefined" &&
-		this === window )
-	{
-		entity = window;
+		}else if( typeof window != "undefined" && arguments.length == 2 ){
+			entity = window;
 
-	}else if( typeof entity == "undefined" ){
-		entity = this;
+		}else if( typeof this != "undefined" ){
+			entity = this;
+
+		}else{
+			throw new Error( "cannot resolve entity as context" );
+		}
 	}
 
 	/*;
