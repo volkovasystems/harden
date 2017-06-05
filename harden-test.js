@@ -1,14 +1,21 @@
-"use strict";
 
+const assert = require( "assert" );
 const harden = require( "./harden.js" );
 
-harden( "STRING", "string" );
-console.log( global.STRING );
-
 let test = { };
-harden( "test", undefined, test );
-console.log( require( "util" ).inspect( test, { "showHidden": true } ) );
-console.log( require( "util" ).inspect( harden( "test", undefined, test ), { "showHidden": true } ) );
+harden( "hello", "world", test );
+let descriptor = Object.getOwnPropertyDescriptor( test, "hello" );
 
-var x = { };
-console.log( harden.bind( x )( "yeah", "world" ), x.yeah );
+assert.equal( test.hello, "world", "should have value 'hello'" );
+
+assert.equal( descriptor.configurable, false, "should be false" );
+
+assert.equal( descriptor.enumerable, false, "should be true" );
+
+assert.equal( descriptor.writable, false, "should be false" );
+
+harden( "hello", "value", test );
+
+assert.equal( test.hello, "world", "should have value 'hello'" );
+
+console.log( "ok" );

@@ -1,6 +1,7 @@
 {
   "name": "harden",
-  "version": "0.21.0",
+  "version": "0.22.0",
+  "description": "Makes your object properties hard.",
   "main": "harden.deploy.js",
   "support": "harden.support.js",
   "homepage": "https://github.com/volkovasystems/harden",
@@ -8,7 +9,6 @@
     "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
     "John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>"
   ],
-  "description": "Makes your object properties hard.",
   "moduleType": [
     "globals"
   ],

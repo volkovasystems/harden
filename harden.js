@@ -45,13 +45,7 @@
 	@module-documentation:
 		Makes your property-value non-enumerable, non-configurable and non-writable.
 
-		If entity is given, the property will be bound to the entity.
-
-		Else, if this module is used in the browser, the entity defaults to the @code:window;.
-
-		Else, if this module is used in a NodeJS environment, the entity defaults to @code:global;.
-
-		Note that if the entity is hardened, you cannot use @code:delete; on it.
+		This will check if the property exists, and it will harden the value if the property exists.
 	@end-module-documentation
 */
 
@@ -71,9 +65,10 @@ const harden = function harden( property, value, entity ){
 	*/
 
 	if( property === "" ||
-		( typeof property != "string" &&
-			typeof property != "symbol" &&
-		 	typeof property != "number" ) )
+
+		( typeof property != "string" && typeof property != "symbol" && typeof property != "number" ) ||
+
+	 	( typeof property == "number" && isNaN( property ) ) )
 	{
 		throw new Error( "invalid property" );
 	}
@@ -100,20 +95,23 @@ const harden = function harden( property, value, entity ){
 		@end-note
 	*/
 	if( typeof entity[ property ] != "undefined" ||
-		Object.getOwnPropertyNames( entity ).some( ( key ) => { return key === property; } ) ||
-	 	( typeof property == "symbol" &&
+
+		Object.getOwnPropertyNames( entity ).some( ( key ) => ( key === property ) ) ||
+
+		( typeof property == "symbol" &&
 			Object.getOwnPropertySymbols( entity )
-				.some( ( symbol ) => { return symbol === property; } ) ) )
+				.some( ( symbol ) => ( symbol === property ) ) ) )
 	{
 		return entity;
 	}
 
 	try{
 		Object.defineProperty( entity, property, {
-			"enumerable": false,
+			"value": value,
+
 			"configurable": false,
-			"writable": false,
-			"value": value
+			"enumerable": false,
+			"writable": false
 		} );
 
 	}catch( error ){
