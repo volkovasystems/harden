@@ -1,8 +1,31 @@
+<!DOCTYPE html>
 <html>
-	<head>
-		<script
-			type="application/javascript"
-			src="./harden.deploy.js">
-		</script>
-	</head>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Harden QUnit Example</title>
+	<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.3.2.css">
+</head>
+
+<body>
+	<div id="qunit"></div>
+	<div id="qunit-fixture"></div>
+	<script src="https://code.jquery.com/qunit/qunit-2.3.2.js"></script>
+	<script type="application/javascript" src="./harden.deploy.js"></script>
+	<script>
+		QUnit.test("equal test", function (assert) {
+			let test = {};
+			harden("hello", "world", test);
+			let descriptor = Object.getOwnPropertyDescriptor(test, "hello");
+			assert.equal(test.hello, "world", "should have value 'hello'");
+			assert.equal(descriptor.configurable, false, "should be false");
+			assert.equal(descriptor.enumerable, false, "should be true");
+			assert.equal(descriptor.writable, false, "should be false");
+			harden("hello", "value", test);
+			assert.equal(test.hello, "world", "should have value 'hello'");
+		});
+	</script>
+</body>
+
 </html>
