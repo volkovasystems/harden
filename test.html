@@ -1,40 +1,26 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>harden unit test</title>
+		<meta charset="utf-8">
 
-		<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.3.2.css">
+		<title>test:harden</title>
 
-		<script type="application/javascript" src="https://code.jquery.com/qunit/qunit-2.3.2.js"></script>
-
-		<script type="application/javascript" src="./harden.deploy.js"></script>
+		<link rel="stylesheet" href="https://unpkg.com/mocha/mocha.css"/>
 	</head>
 
 	<body>
-		<div id="qunit"></div>
+		<div id="mocha"></div>
 
-		<div id="qunit-fixture"></div>
+		<script type="application/javascript" src="https://unpkg.com/mocha/mocha.js"></script>
 
 		<script type="application/javascript">
-			QUnit.test( "harden unit test", function( assert ) {
+			mocha.setup( "bdd" );
+		</script>
 
-				let test = { };
-				harden( "hello", "world", test );
-				let descriptor = Object.getOwnPropertyDescriptor( test, "hello" );
+		<script type="application/javascript" src="./test.deploy.js"></script>
 
-				assert.equal( test.hello, "world", "should have value 'hello'" );
-
-				assert.equal( descriptor.configurable, false, "should be false" );
-
-				assert.equal( descriptor.enumerable, false, "should be true" );
-
-				assert.equal( descriptor.writable, false, "should be false" );
-
-				harden( "hello", "value", test );
-
-				assert.equal( test.hello, "world", "should have value 'hello'" );
-				
-			} );
+		<script type="application/javascript">
+			mocha.run( );
 		</script>
 	</body>
 </html>
