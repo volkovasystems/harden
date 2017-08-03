@@ -71,7 +71,7 @@ const path = require( "path" );
 
 //: @server:
 describe( "harden", ( ) => {
-	
+
 
 } );
 
@@ -79,9 +79,9 @@ describe( "harden", ( ) => {
 //: @end-server
 
 
-//: @client: 
+//: @client:
 describe( "harden", ( ) => {
-	
+
 
 } );
 
@@ -91,25 +91,84 @@ describe( "harden", ( ) => {
 
 //: @bridge:
 
+describe( "harden", ( ) => {
 
+	let bridgeURL = `file://${ path.resolve( __dirname, "bridge.html" ) }`;
+
+	describe( "harden( 'hello','world', test )", ( ) => {
+
+		it( "should be equal to 'world'", ( ) => {
+
+			let result = browser.url( bridgeURL ).execute(
+				function( ){
+					let test = { };
+					harden( "hello", "world", test );
+					return test.hello;
+				}
+			).value;
+
+			assert.equal( result, "world" );
+
+		} );
+
+	} );
+
+	describe( "Property descriptor configurable", ( ) => {
+
+		it( "should be equal to false", ( ) => {
+			//: @ignore:
+			let result = browser.url( bridgeURL ).execute(
+
+				function( ){
+
+				}
+
+			).value;
+			//: @end-ignore
+			assert.equal( result, false );
+
+		} );
+
+	} );
+
+
+	describe( "Property descriptor enumerable", ( ) => {
+
+		it( "should be equal to false", ( ) => {
+			//: @ignore:
+			let result = browser.url( bridgeURL ).execute(
+
+				function( ){
+
+				}
+
+			).value;
+
+			assert.equal( result, false );
+			//: @end-ignore
+		} );
+
+	} );
+
+
+	describe( "Property descriptor writable", ( ) => {
+
+		it( "should be equal to false", ( ) => {
+			//: @ignore:
+			let result = browser.url( bridgeURL ).execute(
+
+				function( ){
+
+				}
+
+			).value;
+			//: @end-ignore
+			assert.equal( result, false );
+
+		} );
+
+	} );
+
+} );
 
 //: @end-bridge
-
-
-// let test = { };
-// harden( "hello", "world", test );
-// let descriptor = Object.getOwnPropertyDescriptor( test, "hello" );
-
-// assert.equal( test.hello, "world", "should have value 'hello'" );
-
-// assert.equal( descriptor.configurable, false, "should be false" );
-
-// assert.equal( descriptor.enumerable, false, "should be true" );
-
-// assert.equal( descriptor.writable, false, "should be false" );
-
-// harden( "hello", "value", test );
-
-// assert.equal( test.hello, "world", "should have value 'hello'" );
-
-// console.log( "ok" );
