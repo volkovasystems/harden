@@ -112,6 +112,7 @@ describe( "harden", ( ) => {
 		} );
 
 	} );
+	
 
 	describe( "Property descriptor configurable", ( ) => {
 
