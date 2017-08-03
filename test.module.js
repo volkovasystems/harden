@@ -120,7 +120,10 @@ describe( "harden", ( ) => {
 			let result = browser.url( bridgeURL ).execute(
 
 				function( ){
-
+					let test = { };
+					harden( "hello", "world", test );
+					let descriptor = Object.getOwnPropertyDescriptor( test, "hello" );
+					return descriptor.configurable;
 				}
 
 			).value;
@@ -139,7 +142,10 @@ describe( "harden", ( ) => {
 			let result = browser.url( bridgeURL ).execute(
 
 				function( ){
-
+					let test = { };
+					harden( "hello", "world", test );
+					let descriptor = Object.getOwnPropertyDescriptor( test, "hello" );
+					return descriptor.enumerable;
 				}
 
 			).value;
@@ -158,7 +164,10 @@ describe( "harden", ( ) => {
 			let result = browser.url( bridgeURL ).execute(
 
 				function( ){
-
+					let test = { };
+					harden( "hello", "world", test );
+					let descriptor = Object.getOwnPropertyDescriptor( test, "hello" );
+					return descriptor.writable;
 				}
 
 			).value;
