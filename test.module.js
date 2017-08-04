@@ -95,7 +95,7 @@ describe( "harden", ( ) => {
 
 	let bridgeURL = `file://${ path.resolve( __dirname, "bridge.html" ) }`;
 
-	describe( "harden( 'hello','world', { } )", ( ) => {
+	describe( "`harden( 'hello','world', { } )`", ( ) => {
 
 		it( "should be equal to 'world'", ( ) => {
 
@@ -112,9 +112,9 @@ describe( "harden", ( ) => {
 		} );
 
 	} );
-	
 
-	describe( "Property descriptor configurable", ( ) => {
+
+	describe( "`Property descriptor configurable`", ( ) => {
 
 		it( "should be equal to false", ( ) => {
 			//: @ignore:
@@ -136,7 +136,7 @@ describe( "harden", ( ) => {
 	} );
 
 
-	describe( "Property descriptor enumerable", ( ) => {
+	describe( "`Property descriptor enumerable`", ( ) => {
 
 		it( "should be equal to false", ( ) => {
 			//: @ignore:
@@ -158,7 +158,7 @@ describe( "harden", ( ) => {
 	} );
 
 
-	describe( "Property descriptor writable", ( ) => {
+	describe( "`Property descriptor writable`", ( ) => {
 
 		it( "should be equal to false", ( ) => {
 			//: @ignore:
