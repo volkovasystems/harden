@@ -95,7 +95,7 @@ describe( "harden", ( ) => {
 
 	let bridgeURL = `file://${ path.resolve( __dirname, "bridge.html" ) }`;
 
-	describe( "`harden( 'hello','world', { } )`", ( ) => {
+	describe( "`harden( 'hello', 'world', { } )`", ( ) => {
 
 		it( "should be equal to 'world'", ( ) => {
 
