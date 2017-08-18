@@ -55,7 +55,7 @@
 	@end-include
 */
 
-const assert = require( "assert" );
+const assert = require( "should" );
 
 //: @server:
 const harden = require( "./harden.js" );
@@ -72,20 +72,14 @@ const path = require( "path" );
 //: @server:
 describe( "harden", ( ) => {
 
-
 } );
-
-
 //: @end-server
 
 
 //: @client:
 describe( "harden", ( ) => {
 
-
-} );
-
-
+}
 //: @end-client
 
 
