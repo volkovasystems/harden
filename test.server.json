@@ -1,16 +1,74 @@
 {
-  "stats": {
-    "suites": 0,
-    "tests": 0,
-    "passes": 0,
-    "pending": 0,
-    "failures": 0,
-    "start": "2017-08-18T07:28:43.572Z",
-    "end": "2017-08-18T07:28:43.572Z",
-    "duration": 0
-  },
-  "tests": [],
-  "pending": [],
-  "failures": [],
-  "passes": []
+	"stats": {
+		"suites": 5,
+		"tests": 4,
+		"passes": 4,
+		"pending": 0,
+		"failures": 0,
+		"start": "2017-08-21T10:40:42.707Z",
+		"end": "2017-08-21T10:40:42.714Z",
+		"duration": 7
+	},
+	"tests": [
+		{
+			"title": "should be equal to 'world'",
+			"fullTitle": "harden `harden( 'hello', 'world', { } )` should be equal to 'world'",
+			"duration": 0,
+			"currentRetry": 0,
+			"err": {}
+		},
+		{
+			"title": "should be equal to false",
+			"fullTitle": "harden `Property descriptor configurable` should be equal to false",
+			"duration": 0,
+			"currentRetry": 0,
+			"err": {}
+		},
+		{
+			"title": "should be equal to false",
+			"fullTitle": "harden `Property descriptor enumerable` should be equal to false",
+			"duration": 0,
+			"currentRetry": 0,
+			"err": {}
+		},
+		{
+			"title": "should be equal to false",
+			"fullTitle": "harden `Property descriptor writable` should be equal to false",
+			"duration": 1,
+			"currentRetry": 0,
+			"err": {}
+		}
+	],
+	"pending": [],
+	"failures": [],
+	"passes": [
+		{
+			"title": "should be equal to 'world'",
+			"fullTitle": "harden `harden( 'hello', 'world', { } )` should be equal to 'world'",
+			"duration": 0,
+			"currentRetry": 0,
+			"err": {}
+		},
+		{
+			"title": "should be equal to false",
+			"fullTitle": "harden `Property descriptor configurable` should be equal to false",
+			"duration": 0,
+			"currentRetry": 0,
+			"err": {}
+		},
+		{
+			"title": "should be equal to false",
+			"fullTitle": "harden `Property descriptor enumerable` should be equal to false",
+			"duration": 0,
+			"currentRetry": 0,
+			"err": {}
+		},
+		{
+			"title": "should be equal to false",
+			"fullTitle": "harden `Property descriptor writable` should be equal to false",
+			"duration": 1,
+			"currentRetry": 0,
+			"err": {}
+		}
+	]
 }

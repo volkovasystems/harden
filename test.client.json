@@ -1,0 +1,180 @@
+{
+	"state": {
+		"passed": 4,
+		"failed": 0,
+		"skipped": 0
+	},
+	"start": "2017-08-21T10:40:44.077Z",
+	"end": "2017-08-21T10:41:16.607Z",
+	"capabilities": {
+		"browserName": "chrome",
+		"chromeOptions": {
+			"args": [
+				"disable-gpu",
+				"headless"
+			]
+		},
+		"proxy": null
+	},
+	"host": "127.0.0.1",
+	"port": 4444,
+	"baseUrl": "http://localhost",
+	"framework": "mocha",
+	"mochaOpts": {
+		"timeout": 10000,
+		"ui": "bdd"
+	},
+	"suites": [
+		{
+			"name": "harden",
+			"duration": 0,
+			"start": "2017-08-21T10:41:16.196Z",
+			"tests": [],
+			"hooks": []
+		},
+		{
+			"name": "harden",
+			"duration": 229,
+			"start": "2017-08-21T10:41:16.197Z",
+			"end": "2017-08-21T10:41:16.426Z",
+			"tests": [],
+			"hooks": [
+				{
+					"start": "2017-08-21T10:41:16.198Z",
+					"end": "2017-08-21T10:41:16.198Z",
+					"duration": 0,
+					"title": "\"before each\" hook",
+					"associatedSuite": "harden",
+					"associatedTest": "should be equal to 'world'"
+				},
+				{
+					"start": "2017-08-21T10:41:16.301Z",
+					"end": "2017-08-21T10:41:16.302Z",
+					"duration": 1,
+					"title": "\"after each\" hook",
+					"associatedSuite": "harden",
+					"associatedTest": "should be equal to 'world'"
+				},
+				{
+					"start": "2017-08-21T10:41:16.303Z",
+					"end": "2017-08-21T10:41:16.304Z",
+					"duration": 1,
+					"title": "\"before each\" hook",
+					"associatedSuite": "harden",
+					"associatedTest": "should be equal to false"
+				},
+				{
+					"start": "2017-08-21T10:41:16.345Z",
+					"end": "2017-08-21T10:41:16.345Z",
+					"duration": 0,
+					"title": "\"after each\" hook",
+					"associatedSuite": "harden",
+					"associatedTest": "should be equal to false"
+				},
+				{
+					"start": "2017-08-21T10:41:16.345Z",
+					"end": "2017-08-21T10:41:16.345Z",
+					"duration": 0,
+					"title": "\"before each\" hook",
+					"associatedSuite": "harden",
+					"associatedTest": "should be equal to false"
+				},
+				{
+					"start": "2017-08-21T10:41:16.386Z",
+					"end": "2017-08-21T10:41:16.386Z",
+					"duration": 0,
+					"title": "\"after each\" hook",
+					"associatedSuite": "harden",
+					"associatedTest": "should be equal to false"
+				},
+				{
+					"start": "2017-08-21T10:41:16.387Z",
+					"end": "2017-08-21T10:41:16.387Z",
+					"duration": 0,
+					"title": "\"before each\" hook",
+					"associatedSuite": "harden",
+					"associatedTest": "should be equal to false"
+				},
+				{
+					"start": "2017-08-21T10:41:16.426Z",
+					"end": "2017-08-21T10:41:16.426Z",
+					"duration": 0,
+					"title": "\"after each\" hook",
+					"associatedSuite": "harden",
+					"associatedTest": "should be equal to false"
+				},
+				{
+					"start": "2017-08-21T10:41:16.426Z",
+					"end": "2017-08-21T10:41:16.426Z",
+					"duration": 0,
+					"title": "\"after all\" hook",
+					"associatedSuite": "harden"
+				}
+			]
+		},
+		{
+			"name": "`harden( 'hello', 'world', { } )`",
+			"duration": 106,
+			"start": "2017-08-21T10:41:16.197Z",
+			"end": "2017-08-21T10:41:16.303Z",
+			"tests": [
+				{
+					"name": "should be equal to 'world'",
+					"start": "2017-08-21T10:41:16.198Z",
+					"end": "2017-08-21T10:41:16.301Z",
+					"duration": 103,
+					"state": "pass"
+				}
+			],
+			"hooks": []
+		},
+		{
+			"name": "`Property descriptor configurable`",
+			"duration": 42,
+			"start": "2017-08-21T10:41:16.303Z",
+			"end": "2017-08-21T10:41:16.345Z",
+			"tests": [
+				{
+					"name": "should be equal to false",
+					"start": "2017-08-21T10:41:16.303Z",
+					"end": "2017-08-21T10:41:16.345Z",
+					"duration": 42,
+					"state": "pass"
+				}
+			],
+			"hooks": []
+		},
+		{
+			"name": "`Property descriptor enumerable`",
+			"duration": 41,
+			"start": "2017-08-21T10:41:16.345Z",
+			"end": "2017-08-21T10:41:16.386Z",
+			"tests": [
+				{
+					"name": "should be equal to false",
+					"start": "2017-08-21T10:41:16.345Z",
+					"end": "2017-08-21T10:41:16.386Z",
+					"duration": 41,
+					"state": "pass"
+				}
+			],
+			"hooks": []
+		},
+		{
+			"name": "`Property descriptor writable`",
+			"duration": 40,
+			"start": "2017-08-21T10:41:16.386Z",
+			"end": "2017-08-21T10:41:16.426Z",
+			"tests": [
+				{
+					"name": "should be equal to false",
+					"start": "2017-08-21T10:41:16.387Z",
+					"end": "2017-08-21T10:41:16.426Z",
+					"duration": 39,
+					"state": "pass"
+				}
+			],
+			"hooks": []
+		}
+	]
+}

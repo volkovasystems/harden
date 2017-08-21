@@ -68,6 +68,64 @@ const harden = require( "./harden.js" );
 //: @server:
 describe( "harden", ( ) => {
 
+	describe( "`harden( 'hello', 'world', { } )`", ( ) => {
+
+		it( "should be equal to 'world'", ( ) => {
+
+			let test = { };
+			harden( "hello", "world", test );
+
+			assert.equal( test.hello, "world" );
+
+		} );
+
+	} );
+
+
+	describe( "`Property descriptor configurable`", ( ) => {
+
+		it( "should be equal to false", ( ) => {
+
+			let test = { };
+			harden( "hello", "world", test );
+			let descriptor = Object.getOwnPropertyDescriptor( test, "hello" );
+
+			assert.equal( descriptor.configurable, false );
+
+		} );
+
+	} );
+
+
+	describe( "`Property descriptor enumerable`", ( ) => {
+
+		it( "should be equal to false", ( ) => {
+
+			let test = { };
+			harden( "hello", "world", test );
+			let descriptor = Object.getOwnPropertyDescriptor( test, "hello" );
+
+			assert.equal( descriptor.enumerable, false );
+
+		} );
+
+	} );
+
+
+	describe( "`Property descriptor writable`", ( ) => {
+
+		it( "should be equal to false", ( ) => {
+
+			let test = { };
+			harden( "hello", "world", test );
+			let descriptor = Object.getOwnPropertyDescriptor( test, "hello" );
+
+			assert.equal( descriptor.writable, false );
+
+		} );
+
+	} );
+
 } );
 //: @end-server
 
